@@ -2015,8 +2015,11 @@ public class PlanComponent extends JComponent implements PlanView, Scrollable, P
         printedLevels.add(level);
       }
     }
-    if (printedLevels.isEmpty()) {
+    if (this.home.getLevels().isEmpty()) {
       return printSelectedLevel(g, pageFormat, pageIndex);
+    } else if (printedLevels.isEmpty()) {
+      // No plan page when no level is viewable
+      return NO_SUCH_PAGE;
     }
 
     Level selectedLevel = this.home.getSelectedLevel();
